@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Django settings for {{cookiecutter.project_name}} project.
+Django settings for {{ project_name }} project.
 
 
 For the full list of settings and their values, see
@@ -10,7 +10,7 @@ import os
 import environ
 
 ROOT_DIR = environ.Path(__file__) - 3  # (/a/b/myfile.py - 3 = /)
-APPS_DIR = ROOT_DIR.path('repo_name')
+APPS_DIR = ROOT_DIR.path('{{ project_name }}')
 
 env = environ.Env()
 
@@ -77,7 +77,7 @@ EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.s
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = (
-    ("""{{cookiecutter.author_name}}""", '{{cookiecutter.email}}'),
+    ("""{{author_name}}""", '{{email}}'),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
@@ -182,10 +182,10 @@ MEDIA_URL = '/media/'
 
 # URL Configuration
 # ------------------------------------------------------------------------------
-ROOT_URLCONF = 'repo_name.urls'
+ROOT_URLCONF = '{{ project_name }}.urls'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
-WSGI_APPLICATION = 'repo_name.wsgi.application'
+WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 
 # AUTHENTICATION CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -205,7 +205,7 @@ WSGI_APPLICATION = 'repo_name.wsgi.application'
 # LOGIN_URL = 'account_login'
 
 
-# Location of root django.contrib.admin URL, use {% raw %}{% url 'admin:index' %}{% endraw %}
+# Location of root django.contrib.admin URL,
 ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
