@@ -1,3 +1,5 @@
+{% if False %}
+
 # Introduction
 
 The goal of this project is to provide minimalistic django project template that everyone can use. 
@@ -25,7 +27,12 @@ To use this template to start your own project simply run:
 
     django-admin.py startproject \
       --template=https://github.com/nikola-k/django-template/zipball/master \
+      --extension=py,md \
       <project_name>
+      
+{% endif %}
+
+# {{ project_name|title }}
 
 # Getting Started
 
