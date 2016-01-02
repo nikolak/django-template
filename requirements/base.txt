@@ -2,3 +2,4 @@ Django==1.9
 django-debug-toolbar==1.4
 django-environ==0.4.0
 django-secure==1.0.1
+django-widget-tweaks==1.4.1

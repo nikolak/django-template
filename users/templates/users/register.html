@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <form class="form-signin" action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+        <h2 class="form-signin-heading">Create a new account</h2>
+
+        <label for="id_username" class="sr-only">Email address</label>
+        {% render_field form.username class="form-control" placeholder="Username" required="" autofocus="" %}
+        {% for error in form.username.errors %}
+            <span class="help-block">{{ error }}</span>
+        {% endfor %}
+
+        <label for="id_password1" class="sr-only">Password</label>
+        {% render_field form.password1 class="form-control" placeholder="Password" required="" type="password" %}
+        {% for error in form.password1.errors %}
+            <span class="help-block">{{ error }}</span>
+        {% endfor %}
+
+        <label for="id_password2" class="sr-only">Password Confirmation</label>
+        {% render_field form.password2 class="form-control" placeholder="Password Confirmation" required="" type="password" %}
+        {% for error in form.password2.errors %}
+            <span class="help-block">{{ error }}</span>
+        {% endfor %}
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+    </form>
+{% endblock %}
