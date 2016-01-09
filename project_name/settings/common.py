@@ -194,4 +194,8 @@ ADMIN_URL = r'^admin/'
 # See: https://docs.djangoproject.com/en/dev/topics/auth/customizing/#substituting-a-custom-user-model
 AUTH_USER_MODEL = 'users.Person'
 
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#login-url
+
+LOGIN_URL = '/users/login/'
+
 # Your common stuff: Below this line define 3rd party library settings
