@@ -6,9 +6,11 @@ from django.views.generic import TemplateView, View
 from .forms import CustomUserCreationForm
 
 
-class LoginView(View):
+class LoginView(TemplateView, View):
+    template_name = 'users/login.html'
+
     def get(self, request, *args, **kwargs):
-        return redirect('home')
+        return self.render_to_response({})
 
     def post(self, request, *args, **kwargs):
         user = authenticate(username=request.POST.get('username'),
