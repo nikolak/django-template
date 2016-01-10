@@ -4,6 +4,7 @@
 {% block content %}
     <form class="form-signin" action="{% url 'register' %}" method="POST">
         {% csrf_token %}
+
         <h2 class="form-signin-heading">Create a new account</h2>
 
         <label for="id_username" class="sr-only">Email address</label>
