@@ -27,7 +27,7 @@ class LoginView(TemplateView, View):
             # the authentication system was unable to verify the username and password
             messages.warning(request, "The username and password were incorrect.")
 
-        return redirect('home')
+        return redirect(request.POST.get('next','home'))
 
 
 class LogoutView(View):
