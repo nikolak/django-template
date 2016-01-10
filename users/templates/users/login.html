@@ -4,6 +4,9 @@
 {% block content %}
     <form class="form-signin" action="{% url 'login' %}" method="POST">
         {% csrf_token %}
+
+        <input type="hidden" id="id_next" name="next" value="{{ request.GET.next }}">
+
         <h2 class="form-signin-heading">Login</h2>
 
         <label for="id_username" class="sr-only">Username</label>
