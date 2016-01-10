@@ -10,33 +10,42 @@
             </button>
             <a class="navbar-brand" href="/">Project name</a>
         </div>
-        {% if user.is_authenticated %}
-            <div id="navbar" class="navbar-collapse collapse">
-                <form class="navbar-form navbar-right" action="{% url 'logout' %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-success">Logout</button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a>Logged in as {{ user.username }}</a></li>
-                </ul>
-            </div>
-        {% else %}
-            <div id="navbar" class="navbar-collapse collapse">
-                <form class="navbar-form navbar-right" action="{% url 'login' %}" method="POST">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <input type="text" placeholder="Username" name="username" id="id_username" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" placeholder="Password" name="password" id="id_password"
-                               class="form-control">
-                    </div>
-                    <button type="submit" class="btn btn-success">Sign in</button>
-                    <a href="{% url 'register' %}" class="btn btn-success">Register</a>
-                </form>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="{% url 'members' %}">Members View</a></li>
+            {% if not user.is_authenticated %}
+                <li><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+                <li id="navbar" class="navbar-collapse collapse">
+                    <form class="navbar-form navbar-right" action="{% url 'logout' %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">Logout</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a>Logged in as {{ user.username }}</a></li>
+                    </ul>
+                </li>
+            {% else %}
+                <li id="navbar" class="navbar-collapse collapse">
+                    <form class="navbar-form navbar-right" action="{% url 'login' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" placeholder="Username" name="username" id="id_username"
+                                   class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" name="password" id="id_password"
+                                   class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success">Sign in</button>
 
-            </div>
-        {% endif %}
-        <!--/.navbar-collapse -->
+                    </form>
+
+                </li>
+            {% endif %}
+            <!--/.navbar-collapse -->
     </div>
 </nav>
