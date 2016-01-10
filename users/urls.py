@@ -19,7 +19,7 @@ urlpatterns = [
         view=views.LogoutView.as_view(),
         name='logout'
     ),
-    
+
     url(
         regex=r'^members/$',
         view=views.MembersView.as_view(),
