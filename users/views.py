@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views.generic import TemplateView, View
 
@@ -57,3 +58,10 @@ class RegisterView(TemplateView):
         else:
             print(form.errors)
             return self.render_to_response({'form': form})
+
+
+class MembersView(LoginRequiredMixin,TemplateView, View):
+    template_name = 'users/members_only.html'
+
+    def get(self, request, *args, **kwargs):
+        return self.render_to_response({})
