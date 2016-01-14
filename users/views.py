@@ -27,7 +27,7 @@ class LoginView(TemplateView, View):
             # the authentication system was unable to verify the username and password
             messages.warning(request, "The username and password were incorrect.")
 
-        return redirect(request.POST.get('next','home'))
+        return redirect(request.POST.get('next', 'home'))
 
 
 class LogoutView(View):
@@ -60,7 +60,7 @@ class RegisterView(TemplateView):
             return self.render_to_response({'form': form})
 
 
-class MembersView(LoginRequiredMixin,TemplateView, View):
+class MembersView(LoginRequiredMixin, TemplateView, View):
     template_name = 'users/members_only.html'
 
     def get(self, request, *args, **kwargs):

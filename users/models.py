@@ -6,4 +6,4 @@ class Person(AbstractUser):
     description = models.TextField(blank=True)
 
     def __str__(self):
-        return "User(<{}>)".format(self.username)
+        return "User(<{}>)".format(self.email)
