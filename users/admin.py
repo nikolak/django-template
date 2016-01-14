@@ -1,7 +1,9 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
 from .models import Person
 
+
 @admin.register(Person)
-class PersonAdminModel(admin.ModelAdmin):
-    fields = ['username', 'last_login']
+class PersonAdminModel(UserAdmin):
+    pass
