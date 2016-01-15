@@ -5,7 +5,6 @@ Production Configurations
 - Use djangosecure
 - Use mailgun to send emails
 '''
-from django.utils import six
 
 from .common import *  # noqa
 
