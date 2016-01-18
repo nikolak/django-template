@@ -2,7 +2,6 @@
 '''
 Production Configurations
 
-- Use djangosecure
 - Use mailgun to send emails
 '''
 
