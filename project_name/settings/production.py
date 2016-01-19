@@ -17,8 +17,6 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 # properly on Heroku.
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# django-secure
-# ------------------------------------------------------------------------------
 INSTALLED_APPS += ( )
 
 SECURITY_MIDDLEWARE = ()
@@ -27,17 +25,32 @@ MIDDLEWARE_CLASSES = ()
 # Make sure security middleware is listed first
 MIDDLEWARE_CLASSES = SECURITY_MIDDLEWARE + MIDDLEWARE_CLASSES
 
+# SECURITY CONFIGURATION
+# ------------------------------------------------------------------------------
+
 # set this to 60 seconds and then to 518400 when you can prove it works
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#secure-hsts-seconds
 SECURE_HSTS_SECONDS = 60
+
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#secure-hsts-include-subdomains
 SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool(
-    "DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS", default=True)
-SECURE_FRAME_DENY = env.bool("DJANGO_SECURE_FRAME_DENY", default=True)
+    "DJANGO_HSTS_INCLUDE_SUBDOMAINS", default=True)
+
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#secure-content-type-nosniff
 SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
-    "DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True)
+    "DJANGO_CONTENT_TYPE_NOSNIFF", default=True)
+
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECURE_BROWSER_XSS_FILTER
 SECURE_BROWSER_XSS_FILTER = True
+
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#session-cookie-secure
 SESSION_COOKIE_SECURE = False
+
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SESSION_COOKIE_HTTPONLY
 SESSION_COOKIE_HTTPONLY = True
-SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
+
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECURE_SSL_REDIRECT
+SECURE_SSL_REDIRECT = env.bool("DJANGO_SSL_REDIRECT", default=True)
 
 # SITE CONFIGURATION
 # ------------------------------------------------------------------------------
