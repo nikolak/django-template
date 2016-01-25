@@ -31,7 +31,7 @@
 {% block navbar %}
     {% include  '_items/navbar.html' %}
 {% endblock %}
-<!-- Main jumbotron for a primary marketing message or call to action -->
+
 <div class="col-xs-12">
     {% for message in messages %}
         <div class="alert alert-dismissible alert-{{ message.tags }}">
@@ -42,7 +42,6 @@
 </div>
 
 <div class="container">
-    <!-- Example row of columns -->
     {% block content %}
     {% endblock %}
 

@@ -14,7 +14,6 @@ indent_size = 4
 
 [*.py]
 line_length=120
-known_first_party={{ cookiecutter.repo_name }}
 multi_line_output=3
 default_section=THIRDPARTY
 
