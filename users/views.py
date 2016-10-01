@@ -56,7 +56,6 @@ class RegisterView(TemplateView):
             messages.success(request, "You can now login!")
             return redirect('home')
         else:
-            print(form.errors)
             return self.render_to_response({'form': form})
 
 
