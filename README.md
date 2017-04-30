@@ -51,7 +51,7 @@ If you don't have django installed for python 3 then run:
     
 And then:
 
-    $ python3 -m django startproject startproject \
+    $ python3 -m django startproject \
       --template=https://github.com/nikola-k/django-template/zipball/master \
       --extension=py,md \
       <project_name>
