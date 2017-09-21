@@ -1,51 +1,96 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Project name</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="{% url 'members' %}">Members View</a></li>
+{#<nav class="navbar navbar-default navbar-fixed-top">#}
+{#    <div class="container">#}
+{#        <div class="navbar-header">#}
+{#            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"#}
+{#                    aria-expanded="false" aria-controls="navbar">#}
+{#                <span class="sr-only">Toggle navigation</span>#}
+{#                <span class="icon-bar"></span>#}
+{#                <span class="icon-bar"></span>#}
+{#                <span class="icon-bar"></span>#}
+{#            </button>#}
+{#            <a class="navbar-brand" href="/">Project name</a>#}
+{#        </div>#}
+{#        <ul class="nav navbar-nav">#}
+{#            <li class="active"><a href="/">Home</a></li>#}
+{#            <li><a href="{% url 'members' %}">Members View</a></li>#}
+{#            {% if not user.is_authenticated %}#}
+{#                <li><a href="{% url 'register' %}">Register</a></li>#}
+{#            {% endif %}#}
+{#        </ul>#}
+{#        <ul class="nav navbar-nav navbar-right">#}
+{#            {% if user.is_authenticated %}#}
+{#                <li id="navbar" class="navbar-collapse collapse">#}
+{#                    <form class="navbar-form navbar-right" action="{% url 'logout' %}" method="POST">#}
+{#                        {% csrf_token %}#}
+{#                        <button type="submit" class="btn btn-success">Logout</button>#}
+{#                    </form>#}
+{#                    <ul class="nav navbar-nav navbar-right">#}
+{#                        <li><a>Logged in as {{ user.username }}</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+{#            {% else %}#}
+{#                <li id="navbar" class="navbar-collapse collapse">#}
+{#                    <form class="navbar-form navbar-right" action="{% url 'login' %}" method="POST">#}
+{#                        {% csrf_token %}#}
+{#                        <div class="form-group">#}
+{#                            <input type="text" placeholder="Username" name="username" id="id_username"#}
+{#                                   class="form-control">#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <input type="password" placeholder="Password" name="password" id="id_password"#}
+{#                                   class="form-control">#}
+{#                        </div>#}
+{#                        <button type="submit" class="btn btn-success">Sign in</button>#}
+{##}
+{#                    </form>#}
+{##}
+{#                </li>#}
+{#            {% endif %}#}
+{#            <!--/.navbar-collapse -->#}
+{#    </div>#}
+{#</nav>#}
+
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'members' %}">Members View</a>
+            </li>
             {% if not user.is_authenticated %}
-                <li><a href="{% url 'register' %}">Register</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
             {% endif %}
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-            {% if user.is_authenticated %}
-                <li id="navbar" class="navbar-collapse collapse">
-                    <form class="navbar-form navbar-right" action="{% url 'logout' %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-success">Logout</button>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a>Logged in as {{ user.username }}</a></li>
-                    </ul>
+        {% if user.is_authenticated %}
+            <ul class="navbar-nav mr-right">
+                <li class="nav-item">
+                    <a class="nav-link"">Logged in as {{ user.username }}</a>
                 </li>
-            {% else %}
-                <li id="navbar" class="navbar-collapse collapse">
-                    <form class="navbar-form navbar-right" action="{% url 'login' %}" method="POST">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <input type="text" placeholder="Username" name="username" id="id_username"
-                                   class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Password" name="password" id="id_password"
-                                   class="form-control">
-                        </div>
-                        <button type="submit" class="btn btn-success">Sign in</button>
-
-                    </form>
-
-                </li>
-            {% endif %}
-            <!--/.navbar-collapse -->
+                <form class="form-inline my-2 my-lg-0" action="{% url 'logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+                </form>
+            </ul>
+        {% else %}
+            <form class="form-inline my-2 my-lg-0" action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="Username"
+                       name="username" id="id_username">
+                <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password"
+                       name="password" id="id_password">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign in</button>
+            </form>
+        {% endif %}
     </div>
 </nav>

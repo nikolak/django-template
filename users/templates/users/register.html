@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% load widget_tweaks %}
+
+{% block css %}
+    <link href="{% static 'css/users.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
     <form class="form-signin" action="{% url 'register' %}" method="POST">

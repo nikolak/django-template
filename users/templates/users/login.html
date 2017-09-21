@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block navbar %}{% endblock %}
-
+{% block css %}
+    <link href="{% static 'css/users.css' %}" rel="stylesheet">
+{% endblock %}
 {% block content %}
     <form class="form-signin" action="{% url 'login' %}" method="POST">
         {% csrf_token %}
@@ -10,7 +13,8 @@
         <h2 class="form-signin-heading">Login</h2>
 
         <label for="id_username" class="sr-only">Username</label>
-        <input type="text" placeholder="Username" name="username" id="id_username" class="form-control" required autofocus>
+        <input type="text" placeholder="Username" name="username" id="id_username" class="form-control" required
+               autofocus>
 
         <label for="id_password" class="sr-only">Password</label>
         <input type="password" placeholder="Password" name="password" id="id_password" class="form-control">
