@@ -6,7 +6,9 @@ The goal of this project is to provide minimalistic django project template that
 
 Template is written with django 1.11 and python 3 in mind.
 
-The main features are:
+![Default Home View](__screenshots/home.png?raw=true "Title")
+
+### Main features
 
 * Separated dev and production settings
 
@@ -26,7 +28,7 @@ The main features are:
 
 To use this template to start your own project:
 
-###Existing virtualenv
+### Existing virtualenv
 
 If your project is already in an existing python3 virtualenv first install django by running
 
@@ -39,7 +41,7 @@ And then run the `django-admin.py` command to start the new project:
       --extension=py,md \
       <project_name>
       
-###No virtualenv
+### No virtualenv
 
 This assumes that `python3` is linked to valid installation of python 3 and that `pip` is installed and `pip3`is valid
 for installing python 3 packages.
