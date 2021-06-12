@@ -22,7 +22,7 @@
         {% if user.is_authenticated %}
             <ul class="navbar-nav mr-right">
                 <li class="nav-item">
-                    <a class="nav-link"">Logged in as {{ user.username }}</a>
+                    <a class="nav-link">Logged in as {{ user.username }}</a>
                 </li>
                 <form class="form-inline my-2 my-lg-0" action="{% url 'logout' %}" method="POST">
                     {% csrf_token %}
